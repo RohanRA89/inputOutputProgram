@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.ironyard.data.gSonClass" %><%--
   Created by IntelliJ IDEA.
   User: rohanayub
   Date: 1/23/17
@@ -11,9 +11,28 @@
     <title>Hello</title>
 </head>
 <body>
-<h3>Hello your name is: <strong><%=request.getSession().getAttribute("firName")%><%=request.getSession().getAttribute("lasName")%></strong></h3>
-<h3>You are:<strong><%=request.getSession().getAttribute("ageVal")%> </strong>years old</h3>
-<h3>You were born in <strong><%=request.getSession().getAttribute("cityName")%></strong> , <strong><%=request.getSession().getAttribute("countryName")%></strong></h3>
+<%
+    gSonClass personObj = (gSonClass) request.getSession().getAttribute("person");
+    if(personObj != null){%>
+        <h3>Hello your name is:
+            <strong>
+                <%=personObj.getFirstName()%>
+                <%=personObj.getLastName()%>
+            </strong>
+        </h3>
+        <h3>You are:
+            <strong>
+                <%=personObj.getPersonAge()%>
+            </strong>years old
+        </h3>
+        <h3>You were born in
+            <strong>
+                <%=personObj.getCityName()%>
+            </strong> ,
+            <strong>
+                <%=personObj.getCountryName()%>
+            </strong></h3>
+    <%}%>
 
 </body>
 </html>

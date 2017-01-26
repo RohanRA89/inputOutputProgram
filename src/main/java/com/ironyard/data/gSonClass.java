@@ -4,16 +4,36 @@ import com.google.gson.Gson;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInput;
 
 /**
  * Created by rohanayub on 1/23/17.
  */
 public class gSonClass {
     private String TMP_DIR = "/tmp/";
-    private String textFileName = null;
     private String firstName;
+    private String lastName;
+    private int personAge;
+    private String cityName;
+    private String countryName;
 
-    public String getFirstName(String s) {
+    public gSonClass(String firstName, String lastName, int personAge, String cityName, String countryName){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.personAge = personAge;
+        this.cityName = cityName;
+        this.countryName = countryName;
+    }
+
+    public String getTMP_DIR() {
+        return TMP_DIR;
+    }
+
+    public void setTMP_DIR(String TMP_DIR) {
+        this.TMP_DIR = TMP_DIR;
+    }
+
+    public String getFirstName() {
         return firstName;
     }
 
@@ -21,7 +41,7 @@ public class gSonClass {
         this.firstName = firstName;
     }
 
-    public String getLastName(String s) {
+    public String getLastName() {
         return lastName;
     }
 
@@ -29,7 +49,7 @@ public class gSonClass {
         this.lastName = lastName;
     }
 
-    public int getPersonAge(String s) {
+    public int getPersonAge() {
         return personAge;
     }
 
@@ -37,7 +57,7 @@ public class gSonClass {
         this.personAge = personAge;
     }
 
-    public String getCityName(String s) {
+    public String getCityName() {
         return cityName;
     }
 
@@ -45,7 +65,7 @@ public class gSonClass {
         this.cityName = cityName;
     }
 
-    public String getCountryName(String s) {
+    public String getCountryName() {
         return countryName;
     }
 
@@ -53,26 +73,21 @@ public class gSonClass {
         this.countryName = countryName;
     }
 
-    private String lastName;
-    private int personAge;
-    private String cityName;
-    private String countryName;
-
-
-    private void saveInformationJsop() {
-        if (textFileName == null) {
-            textFileName = System.currentTimeMillis() + ".personInfo";
-        }
-
+    public String  genFilename() {
+           return  System.currentTimeMillis() + ".personInfo";
     }
 
     public void saveToTemp() {
-        try (FileWriter fw = new FileWriter(TMP_DIR+textFileName)) {
-
+        try (FileWriter fw = new FileWriter(TMP_DIR+genFilename())) {
             Gson temp = new Gson();
             temp.toJson(this,fw);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-}
+    //public String toString(){
+        //return String.format("(First Name: %s, Last Name: %s, Age %i, City Name: %s, Country Name: %s)", getFirstName(),getLastName(),getPersonAge(),getCityName(),getCountryName());
+
+    }
+
+

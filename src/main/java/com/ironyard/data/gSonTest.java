@@ -9,7 +9,7 @@ import java.io.IOException;
  * Created by rohanayub on 1/23/17.
  */
 
-public class gSonTest {
+/*public class gSonTest {
     private String textFileName = null;
     private String TMP_DIR = "/tmp/";
 
@@ -34,7 +34,7 @@ public class gSonTest {
             textFileName = System.currentTimeMillis() + ".personInfo";
         }
 
-    }*/
+    }
 
     public void saveToTemp() {
         try (FileWriter fw = new FileWriter("person" + ".txt")) {
@@ -46,7 +46,7 @@ public class gSonTest {
         }
     }
 
-}
+}*/
 
 
 
